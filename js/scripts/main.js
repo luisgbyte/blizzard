@@ -48,3 +48,31 @@ btnFecharModal.addEventListener('click', () => {
   let tagHtml = document.documentElement;
   tagHtml.classList.remove('show-modal');
 });
+
+const btnMenu = document.querySelectorAll('.js-btn-menu');
+const MenuSite = document.querySelectorAll('.js-menu');
+
+btnMenu.forEach((btn, index) => {
+  btn.addEventListener('click', (event) => {
+    event.preventDefault();
+
+    MenuSite.forEach((item) => {
+      item.classList.remove('active');
+      item.addEventListener('mouseleave', () => {
+
+        item.classList.remove('active');
+
+        btnMenu.forEach((item) => {
+          item.classList.remove('active');
+        });
+      });
+    });
+
+    btnMenu.forEach((item) => {
+      item.classList.remove('active');
+    });
+
+    btn.classList.add('active');
+    MenuSite[index].classList.add('active');
+  });
+});
